@@ -1,5 +1,12 @@
-const Read = () => {
-    return <div>포스트 읽기</div>;
-};
+import React from 'react';
+import PostViewerContainer from '../containers/post/PostViewerContainer';
 
-export default Read;
+const List = () => {
+    return (
+        <>
+            <PostViewerContainer />
+        </>
+    );
+};
+ 
+export default List;
