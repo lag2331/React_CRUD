@@ -2,6 +2,82 @@ import React, { useRef, useEffect, memo } from 'react';
 import { Link } from 'react-router-dom';
 import useInputs from '../module/useInputs';
 import { ADD_ITEM, CHANGE_MENU } from '../module/boardReducer';
+import styled from 'styled-components';
+
+const FormBlock = styled.div`
+  display: grid;
+  grid-template-rows: 1.5fr 7.5fr 1fr;
+  background-color: lemonchiffon;
+  color: darkslategray;
+  width: 90%;
+  min-width: 600px;
+
+  .input-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-bottom: 6px double lightsalmon;
+
+    input {
+      background-color: transparent;
+      text-align: center;
+      border: none;
+      font-size: 3vh;
+      color: darkslategray;
+      font-family: 'Courier New', Courier, monospace;
+      width: 100%;
+      padding: 20px;
+      font-weight: bold;
+
+      input::placeholder {
+        color: lightslategray;
+      }
+
+      :focus {
+        outline: none;
+      }
+    }
+  }
+
+  .textarea {
+    background-color: transparent;
+    border: none;
+    font-size: 2vh;
+    color: darkslategray;
+    padding: 20px;
+    border-bottom: 1px dotted lightseagreen;
+    font-family: 'Courier New', Courier, monospace;
+    line-height: 130%;
+
+    :focus {
+      outline: none;
+    }
+  }
+
+  .btn-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+    font-size: 3vh;
+
+    span {
+      color: coral;
+      cursor: pointer;
+      transition: all 0.3s ease-in;
+
+      :hover {
+        color: lightseagreen;
+      }
+    }
+
+    a {
+      text-decoration: none;
+      color: lightslategray;
+    }
+  }
+
+`;
 
 function formatDate(date) {
     const year = date.getFullYear();
@@ -41,7 +117,7 @@ const Write = memo(({ id, dispatch, history }) => {
     };
 
     return (
-        <div className="form">
+        <FormBlock>
           <div className="input-box">
             <input ref={inputTitle} placeholder="title" name="title" value={title} onChange={onChangeInput} />
           </div>
@@ -50,7 +126,7 @@ const Write = memo(({ id, dispatch, history }) => {
             <span onClick={onClickSubmit}>✔</span>
             <Link to="/">⨉</Link>
           </div>
-        </div>
+        </FormBlock>
       );
 });
 
