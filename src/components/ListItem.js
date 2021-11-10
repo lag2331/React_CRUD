@@ -5,11 +5,11 @@ import styled from 'styled-components';
 
 const ListItemBlock = styled.div`
     display: grid;
-    grid-template-columns: 5.5fr 2.5fr 2fr;
+    grid-template-columns: 6fr 2.5fr 1.5fr;
     font-size: 2vh;
     width: 100%;
     line-height: 3.5vh;
-    border-bottom: 1px dotted lightseagreen;
+    border-bottom: 1px solid blue;
     background-color: lemonchiffon;
 
     div {
@@ -33,8 +33,8 @@ const ListItemBlock = styled.div`
     }
 
     .date {
-        border-left: 1px dotted lightslategray;
-        border-right: 1px dotted lightslategray;
+          border-left: 2px solid lightsalmon;
+          border-right: 2px solid lightsalmon;
     }
 `;
 

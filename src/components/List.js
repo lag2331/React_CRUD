@@ -1,14 +1,14 @@
 import React, { useEffect, memo } from 'react';
 import { CHANGE_MENU } from '../module/boardReducer';
-import ListItem from '../container/ListItem'
+import ListItem from './ListItem'
 import styled from 'styled-components';
 
 const ListBlock = styled.div`
     display: grid;
-    grid-template: 10% 90% / 5.5fr 2.5fr 2fr;
+    grid-template: 10% 90% / 6fr 2.5fr 1.5fr;
     color: darkslategray;
     overflow-y: auto;
-    width: 90%;
+    width: 100%;
     min-width: 600px;
 
     .header {
@@ -19,13 +19,13 @@ const ListBlock = styled.div`
         font-weight: bold;
         display: flex;
         justify-content: center;
-        line-height: 220%;
+        line-height: 250%;
         font-weight: normal;
-        border-bottom: 6px double lightsalmon;
+        border-bottom: 2px solid blue;
 
         :nth-child(2) {
-            border-left: 1px dotted lightslategray;
-            border-right: 1px dotted lightslategray;
+            border-left: 2px solid lightsalmon;
+            border-right: 2px solid lightsalmon;
         }
     }
 

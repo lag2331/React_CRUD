@@ -4,7 +4,7 @@ import { CHANGE_MENU, UPDATE_ITEM } from '../module/boardReducer';
 import useInputs from '../module/useInputs';
 import { getLocalItem } from '../utils';
 import Error from '../container/Error';
-
+import './form.css';
 
 const Update = memo(({ dispatch, match, history }) => {
     const item = getLocalItem(match.params.id);
@@ -34,21 +34,21 @@ const Update = memo(({ dispatch, match, history }) => {
             item.title = title;
             item.content = content;
             dispatch({ type: UPDATE_ITEM, item });
-            history.push(`/detail/${item.id}`);
+            history.push(`/read/${item.id}`);
         }
     };
 
     return (
         <>
             { item ? (
-                <div className="form">
+                <div className='form'>
                     <div className="input-box">
                         <input ref={inputTitle} placeholder="제목" name="title" value={title} onChange={onChangeInput} />
                     </div>
                     <textarea className="textarea" ref={inputContent} placeholder="content" name="content" value={content} onChange={onChangeInput}/>
                     <div className="btn-box">
-                        <span onClick={onClickSubmit}>수정</span>
-                        <Link to="/">취소</Link>
+                        <span onClick={onClickSubmit}>✔</span>
+                        <Link to="/">✖</Link>
                     </div>
                 </div>
             ) : (

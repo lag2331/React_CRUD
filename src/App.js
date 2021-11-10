@@ -5,65 +5,70 @@ import List from './components/List';
 import Write from './components/Write';
 import Update from './components/Update';
 import Read from './components/Read';
-import { boardReducer, GET_LOCAL_STORAGE } from './module/boardReducer';
 import './App.css';
+import { boardReducer, GET_LOCAL_STORAGE } from './module/boardReducer';
 
-// const Board = styled.div`
-//   width: 100%;
-//   height: 100%;
-//   display: grid;
-//   padding: 5vh;
-//   grid-template-rows: 1.5fr 50px 8.5fr;
+const Board = styled.div`
+  width: 100%;
+  height: 100%;
+  max-height: 800px;
+  display: grid;
+  padding-top: 5vh;
+  grid-template-rows: 1.5fr .5fr 8fr;
 
-//   .menu {
-//     background-color:deepskyblue;
-//     width: 90%;
-//     max-width: 800px;
-//     justify-self: center;
-//     align-self: center;
+  .menu {
+    background-color:cornflowerblue;
+    width: 100%;
+    max-width: 800px;
+    min-width: 600px;
+    justify-self: center;
+    align-self: center;
 
-//     h1 {
-//       font-size: 5vh;
-//       line-height: 150%;
-//       text-align: center;
-//       text-transform: uppercase;
-//       color: white;
-//       letter-spacing: 4px;
-//     }
-//   }
+    h1 {
+      font-size: 5vh;
+      line-height: 150%;
+      text-align: center;
+      text-transform: uppercase;
+      color: white;
+      letter-spacing: 8px;
+    }
+  }
 
-//   .btn-write {
-//     width: 90%;
-//     max-width: 800px;
-//     line-height: 200%;
-//     text-align: right;
-//     align-self: center;
-//     justify-self: center;
+  .btn-write {
+    width: 100%;
+    max-width: 800px;
+    min-width: 600px;
+    line-height: 250%;
+    text-align: right;
+    justify-self: center;
+    background-color: black;
 
-//     a {
-//       font-weight: bold;
-//       font-size: 3vh;
-//       color: tomato;
-//       transition: color 0.1s ease-in;
-//       text-decoration-color: lightsalmon;
+    a {
+      font-weight: bold;
+      font-size: 3vh;
+      padding-right: 1.5vh;
+      color: white;
+      text-decoration: none;
+      transition: color .3s ease-in;
+      text-decoration-color: white;
 
-//       & + hover{
-//         color: lightseagreen;
-//       }
-//     }
-//   }
+      :hover{
+        color: coral;
+      }
+    }
+  }
 
-//   .wrap {
-//     width: 100%;
-//     min-width: 600px;
-//     max-width: 900px;
-//     display: flex;
-//     justify-content: center;
-//     overflow: hidden;
-//     justify-self: center;
-//   }
+  .wrap {
+    width: 100%;
+    max-width: 800px;
+    min-width: 600px;
+    display: flex;
+    overflow: hidden;
+    justify-content: center;
+    justify-self: center;
+  }
 
-// `;
+`;
 
 const initialState = {
   list: [],
@@ -89,13 +94,13 @@ const App = () => {
   }, []);
 
   return (
-    <div className="Board">
+    <Board>
       <BrowserRouter basename={process.env.PUBLIC_URL}>
         <div className="menu">
           <h1>{menu}</h1>
         </div>
         <div className="btn-write">
-          <Link to="/write">Write</Link>
+          <Link to="/write">🖋</Link>
         </div>
         <div className="wrap">
           <Route
@@ -123,7 +128,7 @@ const App = () => {
           />
         </div>
       </BrowserRouter>
-    </div>
+    </Board>
   );
 };
 

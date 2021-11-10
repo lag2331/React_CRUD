@@ -2,87 +2,14 @@ import React, { useRef, useEffect, memo } from 'react';
 import { Link } from 'react-router-dom';
 import useInputs from '../module/useInputs';
 import { ADD_ITEM, CHANGE_MENU } from '../module/boardReducer';
-import styled from 'styled-components';
-
-const FormBlock = styled.div`
-  display: grid;
-  grid-template-rows: 1.5fr 7.5fr 1fr;
-  background-color: lemonchiffon;
-  color: darkslategray;
-  width: 90%;
-  min-width: 600px;
-
-  .input-box {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-bottom: 6px double lightsalmon;
-
-    input {
-      background-color: transparent;
-      text-align: center;
-      border: none;
-      font-size: 3vh;
-      color: darkslategray;
-      font-family: 'Courier New', Courier, monospace;
-      width: 100%;
-      padding: 20px;
-      font-weight: bold;
-
-      input::placeholder {
-        color: lightslategray;
-      }
-
-      :focus {
-        outline: none;
-      }
-    }
-  }
-
-  .textarea {
-    background-color: transparent;
-    border: none;
-    font-size: 2vh;
-    color: darkslategray;
-    padding: 20px;
-    border-bottom: 1px dotted lightseagreen;
-    font-family: 'Courier New', Courier, monospace;
-    line-height: 130%;
-
-    :focus {
-      outline: none;
-    }
-  }
-
-  .btn-box {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 50px;
-    font-size: 3vh;
-
-    span {
-      color: coral;
-      cursor: pointer;
-      transition: all 0.3s ease-in;
-
-      :hover {
-        color: lightseagreen;
-      }
-    }
-
-    a {
-      text-decoration: none;
-      color: lightslategray;
-    }
-  }
-
-`;
+import './form.css';
 
 function formatDate(date) {
     const year = date.getFullYear();
-    const month = String(date.getMonth() + 1).padStart(2, '0');
-    const day = String(date.getDay()).padStart(2, '0');
+    const month = ('0' + (date.getMonth() + 1)).slice(-2);
+    const day = ('0' + date.getDate()).slice(-2);
+    console.log(day);
+
     return `${year}-${month}-${day}`;
   }
 
@@ -112,21 +39,21 @@ const Write = memo(({ id, dispatch, history }) => {
           item.date = formatDate(new Date());
           item.views = 0;
           dispatch({ type: ADD_ITEM, item });
-          history.push(`/detail/${item.id}`);
+          history.push(`/read/${item.id}`);
         }
     };
 
     return (
-        <FormBlock>
+        <div className='form'>
           <div className="input-box">
             <input ref={inputTitle} placeholder="title" name="title" value={title} onChange={onChangeInput} />
           </div>
           <textarea className="textarea" ref={inputContent} placeholder="content" name="content" value={content} onChange={onChangeInput} />
           <div className="btn-box">
             <span onClick={onClickSubmit}>✔</span>
-            <Link to="/">⨉</Link>
+            <Link to="/">✖</Link>
           </div>
-        </FormBlock>
+        </div>
       );
 });
 

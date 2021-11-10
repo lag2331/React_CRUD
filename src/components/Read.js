@@ -11,10 +11,10 @@ const ReadBlock = styled.div`
     align-items: center;
     text-align: center;
     background-color: lemonchiffon;
-    color: darkslategray;
+    color: black;
     font-size: 2vh;
     overflow: hidden;
-    width: 90%;
+    width: 100%;
     min-width: 600px;
 
     .date, .views {
@@ -22,11 +22,11 @@ const ReadBlock = styled.div`
         display: flex;
         justify-content: center;
         align-items: center;
-        border-bottom: 1px dotted lightseagreen;
+        border-bottom: 1px solid blue;
     }
 
     .date {
-        border-right: 1px dotted lightslategray;
+        border-right: 1px solid coral;
     }
 
     .title {
@@ -37,8 +37,9 @@ const ReadBlock = styled.div`
         h2 {
             font-size: 3vh;
             margin: 0;
+            margin-bottom: 1vh;
             padding: 20px 10px;
-            border-bottom: 1px solid black;
+            border-bottom: 1px solid blue;
         }
     }
 
@@ -50,9 +51,8 @@ const ReadBlock = styled.div`
         overflow-x: hidden;
         padding: 10px 20px;
         white-space: pre-wrap;
-        border-bottom: 1px dotted lightseagreen;
+        border-bottom: 1px solid blue;
         text-align: left;
-        line-height: 130%;
     }
 
     .btn-box {
@@ -82,7 +82,7 @@ const Read = memo(({ dispatch, match, history}) => {
     const item = getLocalItem(match.params.id);
 
     useEffect(() => {
-        dispatch({ type: CHANGE_MENU, menu: 'Detail' });
+        dispatch({ type: CHANGE_MENU, menu: 'Read' });
     }, [dispatch]);
 
     const onClickDelete = useCallback(() => {
@@ -96,7 +96,7 @@ const Read = memo(({ dispatch, match, history}) => {
         <>
             {item ? (
                 <ReadBlock>
-                    <div className="date">📅 {item.date}</div>
+                    <div className="date">🗓 {item.date}</div>
                     <div className="views">👁 {item.views}</div>
                     <div className="title">
                         <h2>{item.title}</h2>
