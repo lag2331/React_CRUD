@@ -15,6 +15,7 @@ const Board = styled.div`
   display: grid;
   padding-top: 5vh;
   grid-template-rows: 1.5fr .5fr 8fr;
+  
 
   .menu {
     background-color:cornflowerblue;
